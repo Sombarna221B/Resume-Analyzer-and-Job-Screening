@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables: Light (cream) ── */
+:root {
+  --bg:           #F5F0E8;
+  --bg2:          #EDE8DF;
+  --bg3:          #E2DAD0;
+  --card:         #FFFCF7;
+  --card2:        #F9F5EE;
+  --border:       #D8D0C4;
+  --border2:      #C8BDB0;
+  --text:         #1A1714;
+  --text2:        #4A443C;
+  --text3:        #7A7168;
+  --clay:         #C4501A;
+  --clay2:        #E8693A;
+  --clay3:        #F2896A;
+  --clay-faint:   #FDF0EB;
+  --clay-border:  #F0C8B8;
+  --green:        #2A6B3C;
+  --green-faint:  #EAF4EE;
+  --green-border: #B8DEC4;
+  --red:          #A0281C;
+  --red-faint:    #FAEAEA;
+  --red-border:   #F0B8B8;
+  --blue:         #1A4A7A;
+  --blue-faint:   #EAF0FA;
+  --blue-border:  #B8CCE8;
+  --teal:         #1A6B5A;
+  --teal-faint:   #EAF4F0;
+  --teal-border:  #B8DCD4;
+  --amber:        #8C5A10;
+}
+
+/* ── CSS Variables: Dark ── */
+.dark {
+  --bg:           #161210;
+  --bg2:          #1E1A18;
+  --bg3:          #261F1C;
+  --card:         #1E1A18;
+  --card2:        #251F1C;
+  --border:       #352D28;
+  --border2:      #453830;
+  --text:         #F0EBE3;
+  --text2:        #B8B0A4;
+  --text3:        #7A7068;
+  --clay:         #E8693A;
+  --clay2:        #F07848;
+  --clay3:        #F8A880;
+  --clay-faint:   #2A1810;
+  --clay-border:  #5A2E1C;
+  --green:        #4AB868;
+  --green-faint:  #0E2418;
+  --green-border: #1E4828;
+  --red:          #E85858;
+  --red-faint:    #280E0E;
+  --red-border:   #501818;
+  --blue:         #5888D8;
+  --blue-faint:   #0E1828;
+  --blue-border:  #1C3050;
+  --teal:         #38C8A8;
+  --teal-faint:   #0E2420;
+  --teal-border:  #1C4838;
+  --amber:        #E8A830;
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Geist', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 4px; height: 4px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--border2); border-radius: 4px; }
+
+/* ── Animation delays ── */
+.delay-50  { animation-delay: 50ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-250 { animation-delay: 250ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* Animated items start invisible */
+.animate-fade-up { opacity: 0; }
+
+/* ── Textarea reset ── */
+textarea { resize: none; outline: none; }
+textarea::placeholder { color: var(--text3); }
+
+/* ── Link reset ── */
+a { text-decoration: none; color: inherit; }
