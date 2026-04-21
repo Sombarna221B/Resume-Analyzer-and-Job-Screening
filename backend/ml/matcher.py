@@ -86,11 +86,15 @@ class ResumeMatcherAPI:
         r_s = set(extract_skills(r)); j_s = set(extract_skills(j))
         return tfidf_sim, len(r_s & j_s) / max(len(j_s), 1)
 
-    def _predict(self, tfidf_sim, skill_overlap):
-        if self.rf:
-            return float(self.rf.predict_proba(np.array([[tfidf_sim, skill_overlap]]))[0][1])
-        raw = 0.94 * tfidf_sim + 0.06 * skill_overlap
-        return float(np.clip(0.20 + raw * 0.75, 0.0, 1.0))
+    def _predict(self, tfidf_sim: float, skill_overlap: float) -> float:
+     if self.rf:
+        prob = float(self.rf.predict_proba(np.array([[tfidf_sim, skill_overlap]]))[0][1])
+        # prob of 1.0 means model is saturating — use weighted blend as sanity check
+        if prob >= 0.99:
+            prob = min(0.94, 0.60 * tfidf_sim + 0.40 * skill_overlap + 0.15)
+        return prob
+     raw = 0.94 * tfidf_sim + 0.06 * skill_overlap
+     return float(np.clip(0.20 + raw * 0.75, 0.0, 1.0))
 
     def _courses(self, missing):
         if self.courses_df is not None:
